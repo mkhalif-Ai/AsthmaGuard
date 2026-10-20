@@ -1,0 +1,1 @@
+{"code":"23514","details":null,"hint":null,"message":"new row for relation \"symptom_entries\" violates check constraint \"symptom_entries_severity_range\""}

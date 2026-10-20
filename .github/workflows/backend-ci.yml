@@ -1,0 +1,19 @@
+name: backend-ci
+on:
+  pull_request:
+    branches: [develop, main]
+    paths: ['supabase/**', '.github/workflows/backend-ci.yml']
+permissions:
+  contents: read
+jobs:
+  database-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      - name: Start local database and apply migrations
+        run: supabase db start
+      - name: Run pgTAP tests
+        run: supabase test db
